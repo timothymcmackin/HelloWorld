@@ -1,9 +1,12 @@
 package hello;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,9 +39,24 @@ public class HelloServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><body>");
 		out.println("<p>Hello!</p><p> The time is: " + dtf.format(now) + "</p>");
-		out.println("<p><strong>Version 5.</strong></p>");
+		out.println("<p><strong>"+getVersion()+"</strong></p>");
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		out.println("</body></html>");
+	}
+
+	private String getVersion() {
+
+        try {
+        	ClassLoader classLoader = getClass().getClassLoader();
+        	InputStream input = classLoader.getResourceAsStream("/hello/HelloWorld.properties");
+			Properties properties = new Properties();
+			properties.load(input);
+			input.close();
+			return properties.getProperty("version");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        return "Failed to get version number.";
 	}
 
 	/**
