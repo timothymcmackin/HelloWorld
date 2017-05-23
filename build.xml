@@ -7,12 +7,20 @@
 		</fileset>
 	</path>
 	
+	<target name="incrementVersion">
+		<propertyfile file="src/hello/HelloWorld.properties">
+		    <entry key="version" type="int" operation="+" value="1"/>
+		</propertyfile>
+		<loadproperties srcFile="src/hello/HelloWorld.properties"/>
+		<echo message="New version: ${version}"/>
+	</target>
+	
 	<target name="init">
 		<mkdir dir="build/classes"/>
 		<mkdir dir="dist" />
 	</target>
 	
-	<target name="compile" depends="init" >
+	<target name="compile" depends="init, incrementVersion" >
 		<javac destdir="build/classes" debug="true" srcdir="src">
 			<classpath refid="compile.classpath"/>
 		</javac>
