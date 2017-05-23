@@ -18,6 +18,7 @@
 	<target name="init">
 		<mkdir dir="build/classes"/>
 		<mkdir dir="dist" />
+		<mkdir dir="WebContent/WEB-INF/lib" />
 	</target>
 	
 	<target name="compile" depends="init, incrementVersion" >
