@@ -12,10 +12,10 @@
 	</path>
 	
 	<target name="incrementVersion">
-		<propertyfile file="src/hello/HelloWorld.properties">
+		<propertyfile file="config/HelloWorld.properties">
 		    <entry key="version" type="int" operation="+" value="1"/>
 		</propertyfile>
-		<loadproperties srcFile="src/hello/HelloWorld.properties"/>
+		<loadproperties srcFile="config/HelloWorld.properties"/>
 		<echo message="New version: ${version}"/>
 	</target>
 	
@@ -34,6 +34,7 @@
 	<target name="war" depends="compile">
 		<war destfile="dist/HelloWorld.war" webxml="WebContent/WEB-INF/web.xml">
 			<fileset dir="WebContent"/>
+			<fileset dir="config"/>
 			<lib dir="WebContent/WEB-INF/lib"/>
 			<classes dir="build/classes"/>
 		</war>
