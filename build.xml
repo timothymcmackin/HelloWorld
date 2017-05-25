@@ -9,7 +9,6 @@
 		<fileset dir="/opt/wlp/dev/api/spec/">
 			<include name="*.jar"/>
 		</fileset>
-		<fileset dir="config"/>
 	</path>
 	
 	<target name="incrementVersion">
@@ -35,7 +34,7 @@
 	<target name="war" depends="compile">
 		<war destfile="dist/HelloWorld.war" webxml="WebContent/WEB-INF/web.xml">
 			<fileset dir="WebContent"/>
-			<fileset dir="config"/>
+			<fileset file="config/HelloWorld.properties"/>
 			<lib dir="WebContent/WEB-INF/lib"/>
 			<classes dir="build/classes"/>
 		</war>
