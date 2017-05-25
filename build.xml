@@ -9,6 +9,7 @@
 		<fileset dir="/opt/wlp/dev/api/spec/">
 			<include name="*.jar"/>
 		</fileset>
+		<fileset dir="config"/>
 	</path>
 	
 	<target name="incrementVersion">
