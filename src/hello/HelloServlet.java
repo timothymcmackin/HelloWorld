@@ -48,7 +48,7 @@ public class HelloServlet extends HttpServlet {
 
         try {
         	ClassLoader classLoader = getClass().getClassLoader();
-        	InputStream input = classLoader.getResourceAsStream("HelloWorld.properties");
+        	InputStream input = classLoader.getResourceAsStream("/HelloWorld.properties");
 			Properties properties = new Properties();
 			properties.load(input);
 			input.close();
